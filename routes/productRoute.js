@@ -20,4 +20,5 @@ router.get('/:id', async (req, res) => {
     res.render('detailsView', { product })
 })
 
+
 module.exports = router;

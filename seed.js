@@ -14,6 +14,26 @@ const connectDb = async () => {
 }
 
 connectDb();
+
+const Category = require('./models/category');
+const category = [
+    {categoryName: 'Confectionary'},
+    {categoryName: 'Dairy'},
+    {categoryName: 'Fruit'},
+    {categoryName: 'Grocery'},
+    {categoryName: 'Grain'},
+    {categoryName: 'Herbs'},
+    {categoryName: 'Protein'},
+    {categoryName: 'Vegetable'}
+]
+Category.insertMany(category)
+.then(response => {
+    console.log(response)
+})
+.catch(e => {
+    console.log(e);
+})
+
 // ALL BUSHELS AND CASES OF FRUITS AND VEGEES WEIGH 50LBS
 const Vendor = require('./models/vendor');
 const vendors = [
@@ -93,4 +113,4 @@ Product.insertMany(products)
     console.log(e);
 })
 
-mongoose.disconnect();
+// mongoose.disconnect();
