@@ -14,31 +14,32 @@ const Product = require('./models/product');
 const Sell = require('./models/sell');
 const Vendor = require('./models/vendor');
 
-const products = require('./routes/productRoute');
-const sold = require('./routes/soldRoute');
-const vendors = require('./routes/vendorRoute');
-
-const connectDb = async () => {
+const connectDB = async () => {
     mongoose.connect(process.env.MONGO_URI);
     mongoose.connection
         .on('open', () => console.log('CONNECTED TO MongoDb!!!'))
         .on('close', () => console.log('MongoDb CONNECTION CLOSED!!!'))
         .on('error', (error) => console.log(error))
 }
+connectDB();
 
-connectDb();
+const productRoute = require('./routes/productRoute');
+const soldRoute = require('./routes/soldRoute');
+const vendorRoute = require('./routes/vendorRoute');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded( { extended: true } ) );
 
-// app.use('/products', products);
+app.use('/products', productRoute);
 // app.use('/sold', sold);
 // app.use('/vendors', vendors);
 
-app.use(bodyParser.urlencoded( { extended: true } ) );
 
-app.get('/products', async (req, res) => {
+app.get('/', async (req, res) => {
     const products = await Product.find( {} )
-    res.render('products/index', { products })
+    // res.send(products)
+    res.render('index')
 })
 
 app.use((err, req, res, next) => {

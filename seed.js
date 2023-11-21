@@ -93,4 +93,4 @@ Product.insertMany(products)
     console.log(e);
 })
 
-// mongoose.disconnect();
+mongoose.disconnect();

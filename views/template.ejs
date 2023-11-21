@@ -10,6 +10,14 @@
     <title>MongoDB Database Application</title>
 </head>
 <body>
-    <h1>Welcome to My Store</h1>
+    <h1>
+        <%= h1 %>
+    </h1>
+    <ul>
+        <% for(let product of products)  { %>
+            <li><a href="/products/<%=product._id%>"><%= product.productName %></a></li>
+        <% } %>
+    </ul>
+
 </body>
 </html>
