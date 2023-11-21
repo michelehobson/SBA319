@@ -1,0 +1,40 @@
+body {
+    overflow: hidden;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Kay Pho Du', serif;
+    font-weight: 700;
+    font-size: 3em;
+    margin-top: 50px;
+}
+
+.myNavStyle {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 1.35em;
+    margin-top: 35px;
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.menuLinkStyle {
+    list-style-type: none;
+    font-family: 'Arsenal', sans-serif;
+    text-decoration: none;
+    color: #8e8b8b;
+    margin: -20px 10px 0px 10px;
+}
+
+a:hover {
+    color: #000;
+}
+
+a:active,
+a:focus {
+    /* color: #475F6B !important; */
+    color: #1f4456;
+}
+

@@ -8,10 +8,16 @@ const Product = require('../models/product')
 const h1 = 'All Products';
 const desc = 'Product';
 
+
 router.get('/', async (req, res) => {
     const products = await Product.find({})
-    // const { id } = req.params;
-    res.render('template', { products, h1, desc })
+    res.render('productView', { products, h1, desc })
+})
+
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    res.render('detailsView', { product })
 })
 
 module.exports = router;

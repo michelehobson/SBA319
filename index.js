@@ -7,6 +7,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.json());
 
@@ -37,7 +38,7 @@ app.use('/products', productRoute);
 
 
 app.get('/', async (req, res) => {
-    const products = await Product.find( {} )
+    // const products = await Product.find( {} )
     // res.send(products)
     res.render('index')
 })
