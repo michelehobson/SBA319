@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const v = require('./vendor');
 
 // DEFINE SCHEMA
 const sellSchema = new mongoose.Schema({
@@ -10,8 +11,8 @@ const sellSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        min: cost += .10,
-        max: cost += .25,
+        // min: .25,
+        // max: cost += .25,
         onSale: false
     },
     uom: {
@@ -31,6 +32,6 @@ const sellSchema = new mongoose.Schema({
 })
 
 // DEFINE MODEL
-const Sell = mongoose.model('Sell', soldSchema);
+const Sell = mongoose.model('Sell', sellSchema);
 
 module.exports = Sell;

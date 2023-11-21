@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
-        enum: ['Fruits', 'Vegetables', 'Dairy', 'Staple', 'Grains', 'Protein', 'Candy']
+        enum: ['Fruits', 'Vegetables', 'Dairy', 'Grocery', 'Grains', 'Protein', 'Candy', 'Herb']
     }
 })
 
@@ -24,6 +24,7 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
+
 // const mongoose = require('mongoose');
 
 // // DEFINE SCHEMA
