@@ -21,7 +21,7 @@ const vendorSchema = new mongoose.Schema({
     category: {
         type: String,
         index: true,
-        enum: ['Fruit', 'Vegetable', 'Dairy', 'Grocery', 'Grain', 'Protein', 'Candy', 'Herb']
+        vendCat: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category'}]
     },
     vpName: String,
     vpQty: Number,

@@ -1,4 +1,3 @@
-// 
 // Open node
 // .load seed.js
 const mongoose = require('mongoose');
@@ -12,7 +11,6 @@ const connectDb = async () => {
         .on('close', () => console.log('MongoDb CONNECTION CLOSED!!!'))
         .on('error', (error) => console.log(error))
 }
-
 connectDb();
 
 const Category = require('./models/category');

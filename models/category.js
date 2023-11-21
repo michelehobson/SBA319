@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Product = require('./product');
 
 // DEFINE SCHEMA
 const categorySchema = new mongoose.Schema({
@@ -6,6 +7,8 @@ const categorySchema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
+        catVend: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vendor'}],
+        catProd: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product'}]
     }
 })
 

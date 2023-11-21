@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Vendor = require('./vendor');
 
 // DEFINE SCHEMA
 const productSchema = new mongoose.Schema({
@@ -16,10 +17,15 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
-        enum: ['Fruit', 'Vegetable', 'Dairy', 'Grocery', 'Grain', 'Protein', 'Candy', 'Herb']
-    }
+        // prodCat: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Category'}]
+        prodCat: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Vendor'}]
+    },
+
 })
 
 // DEFINE MODEL
 const Product = mongoose.model('Product', productSchema);
+
+Vendor.find()
+.then(p => console.log(p)).catch(error => console.log(error))
 module.exports = Product;
