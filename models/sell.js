@@ -11,20 +11,19 @@ const sellSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        // min: .25,
-        // max: cost += .25,
+        min: .25,
         onSale: false
     },
     uom: {
         type: String,
         required: true,
         lowercase: true,
-        enum: ['per lb', 'each', 'bag', 'gallon', '.5 gallon'],
+        enum: ['per lb', 'each', 'bag', 'gallon', '.5 gallon', 'case', 'bushel'],
     },
     category: {
         type: String,
         index: true,
-        enum: ['Fruits', 'Vegetables', 'Dairy', 'Staple', 'Grains', 'Protein', 'Candy']
+        enum: ['Fruit', 'Vegetable', 'Dairy', 'Grocery', 'Grain', 'Protein', 'Candy', 'Herb']
     },
     qtyOnHand: Number
     //This should be updated by vendor quantity as well as quantity sold
@@ -33,5 +32,4 @@ const sellSchema = new mongoose.Schema({
 
 // DEFINE MODEL
 const Sell = mongoose.model('Sell', sellSchema);
-
 module.exports = Sell;

@@ -21,13 +21,17 @@ const vendorSchema = new mongoose.Schema({
     category: {
         type: String,
         index: true,
-        enum: ['Fruits', 'Vegetables', 'Dairy', 'Staple', 'Grains', 'Protein', 'Candy']
+        enum: ['Fruit', 'Vegetable', 'Dairy', 'Grocery', 'Grain', 'Protein', 'Candy', 'Herb']
     },
-    purchased: {
-        pName: String,
-        pQty: Number,
-        uomCost: Number
-    }
+    vpName: String,
+    vpQty: Number,
+    uom: {
+        type: String,
+        required: true,
+        lowercase: true,
+        enum: ['per lb', 'each', 'bag', 'gallon', '.5 gallon', 'case', 'bushel'],
+        },
+    uomCost: Number
 })
 
 const Vendor = new mongoose.model('Vendor', vendorSchema);

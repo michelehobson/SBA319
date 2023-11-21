@@ -26,6 +26,7 @@ const connectDb = async () => {
         .on('error', (error) => console.log(error))
 }
 
+connectDb();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
