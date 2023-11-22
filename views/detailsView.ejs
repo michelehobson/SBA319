@@ -19,7 +19,17 @@
     </nav>
 
     <div id="prodInfo">
-        <form action=""></form>
+        <form action="/products/<%=product._id%>" method="POST">
+            <label for="name">Product Name</label>
+            <input type="text" name="name" id="name" value="<%= %>">
+            <label for=""></label>
+            <input type="text" name="" id="" value="<%= %>">
+            <label for=""></label>
+            <input type="text" name="" id="" value="<%= %>">
+            <label for=""></label>
+            <input type="text" name="" id="" value="<%= %>">
+        
+        </form>
     </div>
     <ul>
         <li>Price: <%= product.price  %></li>
