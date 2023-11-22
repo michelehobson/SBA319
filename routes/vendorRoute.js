@@ -4,21 +4,21 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const Category = require('../models/category');
-const h1 = 'All Categories';
-const desc = 'Category';
+const Vendor = require('../models/vendor');
+const h1 = 'All Vendors';
+const desc = 'Vendor';
 
 
 router.get('/', async (req, res) => {
-    const categories = await Category.find({}).sort( {categoryName: 1 })
-    // console.log(categories)
-    res.render('categoryView', { categories, h1, desc })
+    const vendors = await Vendor.find({}).sort( {vendorName: 1 })
+    // console.log(vendors)
+    res.render('vendorView', { vendors, h1, desc })
 })
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const category = await Category.findById(id);
-    res.render('categoryView', { category })
+    const vendor = await Vendor.findById(id);
+    res.render('vendorView', { vendor })
 })
 
 
