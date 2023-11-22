@@ -41,9 +41,13 @@
             <select name="category" id="category" class="category">
                 <option value=""></option>
                 <% for(let category of categories) { %>
-                    <option value="<%=category._id%>"><%= category.categoryName %></option>
-                <% } %>
+                    <option value="<%=category._id%>">
+                        <%= category.categoryName %>
+                    </option>
+                    <% } %>
             </select>
+            <input class="btn" type="submit" value="Edit Current">
+            <input class="btn" type="submit" value="Add New">
         </form>
     </div>
     <br>
@@ -51,7 +55,7 @@
     <br>
     <main>
     </main>
-    
+
 </body>
 
 </html>
