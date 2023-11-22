@@ -27,12 +27,29 @@ h1 {
     color: #8e8b8b;
     margin: -20px 10px 0px 10px;
 }
-#prodInfo {
-    
+#prodInfo, #vendInfo {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    font-family: 'Arsenal', sans-serif;
+    margin: 50px 0px 0px 30vw;
+    font-size: 1.25em;
+}
+#catInfo {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    font-family: 'Arsenal', sans-serif;
+    margin-top: 50px;
+    font-size: 1.25em;
+}
+.category {
+    font-family: 'Arsenal', sans-serif;
+    font-size: 1em;
 }
 hr {
     margin-top: 30px;
-    height: 10;
+    height: 10px;
 }
 ul {
     display: flex;

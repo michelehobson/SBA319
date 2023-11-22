@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Bungee+Spice&family=EB+Garamond:wght@400;500;600&family=Kay+Pho+Du:wght@400;500&family=Libre+Baskerville:wght@400;700&family=Neuton:wght@200;300;400;700;800&family=Nosifer&family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
     <title>MongoDB Database Application</title>
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(225, 225, 225);
+            background-image: url(/data/pyramid.jpeg);
+            background-size: 98vh;
+            background-repeat: no-repeat;
+            background-position: top 10px left 50%;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Categories</h1>
     <nav class="myNavStyle">
@@ -17,19 +32,26 @@
         <a class="menuLinkStyle" href="../../products">Products</a>
         <a class="menuLinkStyle" href="../../vendors">Vendors</a>
     </nav>
+    <br>
+    <hr>
 
     <div id="catInfo">
         <form action="/categories/<%=categories._id%>" method="POST">
             <label for="name">Category Name</label>
-            <input type="text" name="name" id="name" value="<%= %>">
-            <label for=""></label>
-            <input type="text" name="" id="" value="<%= %>">
-            <label for=""></label>
-            <input type="text" name="" id="" value="<%= %>">
-            <label for=""></label>
-            <input type="text" name="" id="" value="<%= %>">
+            <select name="category" id="category" class="category">
+                <option value=""></option>
+                <% for(let category of categories) { %>
+                    <option value="<%=category._id%>"><%= category.categoryName %></option>
+                <% } %>
+            </select>
         </form>
     </div>
-
+    <br>
+    <br>
+    <br>
+    <main>
+    </main>
+    
 </body>
+
 </html>
