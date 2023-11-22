@@ -11,9 +11,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.json());
 
-const Product = require('./models/product');
-const Sell = require('./models/sell');
-const Vendor = require('./models/vendor');
+// const Product = require('./models/product');
+// const Vendor = require('./models/vendor');
+// const Category = require('./models/category');
 
 const connectDB = async () => {
     mongoose.connect(process.env.MONGO_URI);
@@ -25,21 +25,19 @@ const connectDB = async () => {
 connectDB();
 
 const productRoute = require('./routes/productRoute');
-const soldRoute = require('./routes/soldRoute');
 const vendorRoute = require('./routes/vendorRoute');
+const categoryRoute = require('./routes/categoryRoute')
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded( { extended: true } ) );
 
 app.use('/products', productRoute);
-// app.use('/sold', sold);
-// app.use('/vendors', vendors);
+app.use('/categories', categoryRoute);
+app.use('/vendors', vendorRoute);
 
 
 app.get('/', async (req, res) => {
-    // const products = await Product.find( {} )
-    // res.send(products)
     res.render('index')
 })
 

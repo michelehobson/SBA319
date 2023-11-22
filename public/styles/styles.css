@@ -27,6 +27,24 @@ h1 {
     color: #8e8b8b;
     margin: -20px 10px 0px 10px;
 }
+#prodInfo {
+    
+}
+hr {
+    margin-top: 30px;
+    height: 10;
+}
+ul {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    margin: 25px 0px 0px 100px;
+}
+li {
+    list-style-type: none;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 1em;
+}
 
 a:hover {
     color: #000;

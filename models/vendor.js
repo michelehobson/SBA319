@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Category = require('./category')
 
 // DEFINE SCHEMA
 const vendorSchema = new mongoose.Schema({
@@ -35,4 +36,5 @@ const vendorSchema = new mongoose.Schema({
 })
 
 const Vendor = new mongoose.model('Vendor', vendorSchema);
+// Category.find().then(c => console.log(c)).catch(error => console.log(error));
 module.exports = Vendor;

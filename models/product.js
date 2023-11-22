@@ -17,15 +17,11 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
-        // prodCat: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Category'}]
         prodCat: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Vendor'}]
-    },
-
+    }
 })
 
 // DEFINE MODEL
 const Product = mongoose.model('Product', productSchema);
-
-Vendor.find()
-.then(p => console.log(p)).catch(error => console.log(error))
+// Vendor.find().then(v => console.log(v)).catch(error => console.log(error))
 module.exports = Product;
