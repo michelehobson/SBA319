@@ -7,6 +7,7 @@ const categorySchema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
+        unique: true,
         catVend: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vendor'}],
         catProd: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product'}]
     }

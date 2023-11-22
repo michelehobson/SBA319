@@ -4,25 +4,26 @@ const Category = require('./category')
 // DEFINE SCHEMA
 const vendorSchema = new mongoose.Schema({
     vendorName: String,
-    location: {
-        address: String,
-        city: String,
-        state: {
-            enum: ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN',
-                'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
-                'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT',
-                'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
-        },
-        zip: {
-            type: Number,
-            min: 5,
-            max: 5
-        }
+    address: String,
+    city: String,
+    state: {
+        type: String,
+        min: 2,
+        max: 2,
+        enum: ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN',
+            'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+            'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT',
+            'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
+    },
+    zip: {
+        type: Number,
+        min: 5,
+        max: 5
     },
     category: {
         type: String,
         index: true,
-        vendCat: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category'}]
+        vendCat: [{type: mongoose.Schema.Types.ObjectId, ref: 'Category'}]
     },
     vpName: String,
     vpQty: Number,
@@ -31,7 +32,7 @@ const vendorSchema = new mongoose.Schema({
         required: true,
         lowercase: true,
         enum: ['per lb', 'each', 'bag', 'gallon', '.5 gallon', 'case', 'bushel'],
-        },
+    },
     uomCost: Number
 })
 
