@@ -16,7 +16,7 @@ const vendorSchema = new mongoose.Schema({
             'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
     },
     zip: {
-        type: Number,
+        type: String,
         min: 5,
         max: 5
     },
