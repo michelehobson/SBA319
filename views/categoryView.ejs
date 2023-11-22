@@ -40,20 +40,18 @@
     <hr>
 
     <div id="catInfo">
-        <form action="/categories/<%=categories._id%>" method="POST">
+        <form  action="/categories/<%=categories._id%>" method="POST">
             <label for="name">Category Name</label>
-            <select name="category" id="category" class="category" onchange="change()">>
+            <select onchange="this.nextElementSibling.value=this.value" name="category" id="category" class="category">>
                 <option value=""></option>
                 <% for(let category of categories) { %>
                     <option value="<%=category._id%>"><%= category.categoryName %></option>
                     <% } %>
             </select>
-            <!-- <a id="edit" href="/categories">Edit Current</a>
-            <a id="add" href="/categories">Add New</a>
-            <a id="del" href="/categories">Delete Current</a> -->
-            <input id="edit" class="btn"type="submit" value="Reset">
-            <input class="btn"type="submit" value="Send">
-
+            <!-- <input class="select-editable" type="text" name="format" value=""/> -->
+            <a id="edit" href="">Edit Current</a>
+            <a id="add" href="/categories/newCat">Add New</a>
+            <a id="del" href="">Delete Current</a>
         </form>
     </div>
     <br>
@@ -61,13 +59,18 @@
     <main>
     </main>
         <script>
-            // function change() {
-            //     console.log("hello")
-            //     document.getElementById('edit').addEventListener('click', function() {
-            //     alert('Button clicked!');
-            // })
-                document.getElementById('category').addEventListener('change', function(e) {
-                    alert(e.target.value)
+            let catId = '';
+            document.getElementById('category').addEventListener('change', function(e) {
+                catId = e.target.value;
+                alert(catId);
+            })
+            document.getElementById('edit').addEventListener('click', function(e) {
+                const editProduct = document.getElementById('edit');
+                editProduct.setAttribute('href', `/categories/${catId}`)
+            })
+            document.getElementById('del').addEventListener('click', function(e) {
+                const delProduct = document.getElementById('del');
+                delProduct.setAttribute('href', `/categories/${catId}`)
             })
         </script>
 
