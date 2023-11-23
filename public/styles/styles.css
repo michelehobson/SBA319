@@ -27,7 +27,15 @@ h1 {
     color: #8e8b8b;
     margin: -20px 10px 0px 10px;
 }
-#prodInfo, #vendInfo {
+#prodInfo {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    font-family: 'Arsenal', sans-serif;
+    margin: 50px auto 0px auto;
+    font-size: 1.25em;
+}
+#vendInfo {
     display: flex;
     flex-flow: column wrap;
     justify-content: flex-start;
@@ -82,36 +90,4 @@ form .btn {
     margin-left: 10px;
     margin-right: 10px;
     width: auto;
-}
-.select-editable {
-    position:relative; 
-    background-color:white; 
-    border:solid grey 1px;  
-    width:120px; 
-    height:18px;
-}
-.select-editable select {
-    position:absolute; 
-    top:0px; 
-    left:0px; 
-    font-size:14px; 
-    border:none; 
-    width:120px; 
-    margin:0;
-}
-.select-editable input {
-    position:absolute; 
-    top:0px; 
-    left:0px; 
-    width:100px; 
-    padding:1px; 
-    font-size:12px; 
-    border:none;
-}
-.select-editable select:focus, .select-editable input:focus {
-    outline:none;
-}
-.select-editable {
-    font-family: 'Arsenal', sans-serif;
-    font-size: 1em;
 }

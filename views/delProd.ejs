@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Bungee+Spice&family=EB+Garamond:wght@400;500;600&family=Kay+Pho+Du:wght@400;500&family=Libre+Baskerville:wght@400;700&family=Neuton:wght@200;300;400;700;800&family=Nosifer&family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Delete Product</title>
+</head>
+<body>
+    <h1><%= h1 %></h1>
+    <nav class="myNavStyle">
+        <a class="menuLinkStyle" href="/">Home</a>
+        <a class="menuLinkStyle" href="../../categories">Categories</a>
+        <a class="menuLinkStyle" href="../../products">Products</a>
+        <a class="menuLinkStyle" href="../../vendors">Vendors</a>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+    <form action="/products/<%=product._id %>?_method=DELETE" method="POST">
+        <label for="productName">Product Name</label>
+        <input type="text" name="productName" value="<%=product.productName%>">
+        </select>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

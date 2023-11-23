@@ -54,7 +54,6 @@ router.get('/:id/delCat', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-    res.send('JESUS IS THE BEST THING')
     const { id } = req.params;
     const category = await Category.findByIdAndDelete(id, req.body, {runValidators: true, new: true})
     const categories = await Category.find({}).sort({categoryName: 1});

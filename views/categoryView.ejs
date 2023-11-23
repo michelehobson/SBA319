@@ -42,13 +42,12 @@
     <div id="catInfo">
         <form  action="/categories/<%=categories._id%>" method="POST">
             <label for="name">Category Name</label>
-            <select onchange="this.nextElementSibling.value=this.value" name="category" id="category" class="category">>
+            <select name="category" id="category" class="category">>
                 <option value=""></option>
                 <% for(let category of categories) { %>
                     <option value="<%=category._id%>"><%= category.categoryName %></option>
                     <% } %>
             </select>
-            <!-- <input class="select-editable" type="text" name="format" value=""/> -->
             <a id="edit" href="">Edit Current</a>
             <a id="add" href="/categories/cat">Add New</a>
             <a id="del" href="">Delete Current</a>
@@ -64,11 +63,11 @@
                 catId = e.target.value;
                 // alert(catId);
             })
-            document.getElementById('edit').addEventListener('click', function(e) {
+            document.getElementById('edit').addEventListener('click', function() {
                 const editProduct = document.getElementById('edit');
                 editProduct.setAttribute('href', `/categories/${catId}/editCat`)
             })
-            document.getElementById('del').addEventListener('click', function(e) {
+            document.getElementById('del').addEventListener('click', function() {
                 const delProduct = document.getElementById('del');
                 delProduct.setAttribute('href', `/categories/${catId}/delCat`)
             })
