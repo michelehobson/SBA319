@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Vendor = require('./vendor');
+const Category = require('./category');
 
 // DEFINE SCHEMA
 const productSchema = new mongoose.Schema({
@@ -17,7 +18,8 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
-        prodCat: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Vendor'}]
+        prodCat: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Category'}],
+        prodVend: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Vendor'}]
     }
 })
 

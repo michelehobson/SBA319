@@ -40,6 +40,7 @@ Extras:
 4. Created EJS files to create a front-end
 5. Using EJS, I linked each product/:id to an anchor tag for easier navigation
 6. I used Mongoose
+7. 
 
 Changed After Submission:
 1. Added conditional to ensure an option had been selected before navigating to edit or delete a record

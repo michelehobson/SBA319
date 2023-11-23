@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
 const Category = require('../models/category');
+const Vendor = require('../models/vendor');
+const Product = require('../models/product');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
@@ -54,7 +56,31 @@ router.get('/:id/delCat', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
-    const category = await Category.findByIdAndDelete(id, req.body, {runValidators: true, new: true})
+    console.log(req.params)
+    const cat = await Category.findById(id)
+    const name = cat.categoryName;
+    console.log('CATEGORY: ' + name)
+
+    // POPULATE LOGIC
+    const category = await Category.
+    findOne({ categoryName: name}).
+    populate({
+        path:'categoryName.catProd',
+        select: '_id category productName'
+    })
+    .exec();
+        console.log(category)
+
+    const product = await Product.
+    findOne({ category: name}).
+    populate({
+        path:'category.prodCat',
+        select: '_id category productName'
+    })
+    .exec();
+        console.log(product)
+
+    // const category = await Category.findByIdAndDelete(id, req.body, {runValidators: true, new: true})
     const categories = await Category.find({}).sort({categoryName: 1});
     res.render('categoryView', {categories});
 })
