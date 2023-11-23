@@ -11,10 +11,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.json());
 
-// const Product = require('./models/product');
-// const Vendor = require('./models/vendor');
-// const Category = require('./models/category');
-
 const connectDB = async () => {
     mongoose.connect(process.env.MONGO_URI);
     mongoose.connection

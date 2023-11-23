@@ -4,62 +4,45 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const Category = require('../models/category');
 
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+// app.use(bodyParser.urlencoded( { extended: true } ) );
+router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({extended: true}));
+
 router.get('/', async (req, res) => {
-    const categories = await Category.find({}).sort( {categoryName: 1 });
+    const categories = await Category.find({}).sort({categoryName: 1});
     // console.log(categories)
-    res.render('categoryView', { categories });
+    res.render('categoryView', {categories});
 })
 
 router.get('/newCat', async (req, res) => {
     res.render('newCat')
 })
 
-router.post('/categories', (req, res) => {
-    console.log(req.body)
-    res.send('making your cat')
+router.post('/', async (req, res) => {
+    let newCat = {categoryName: req.body.categoryName};
+    let newCategory = new Category(newCat)
+    console.log('***: ' + newCategory.categoryName);
+    res.send(newCategory)
+    await newCategory.save();
+    // res.json(newCategory);
+    const categories = await Category.find({}).sort({categoryName: 1});
+    res.render('categoryView', {categories});
 })
-// router.get('/newCat', async (req, res) => {
-//     const categories = await Category.find({})
-//     console.log('HERE')
-//     res.render('newCat', { categories })
-// })
-
-// router.post('/categories/newCat', async (req, res) => {
-    // const catName = {
-    //     query: { _id: new ObjectId(req.params.id) },
-    //     name: req.body.categoryName
-    // };
-
-    // res.send({
-    //     userName: "bob",
-    //     desc: "recieived a POST request for user!",
-    //   });
-    
-    // res.render('newCat', { newCatVal });
-    // const newCatVal = new Category(req.body);
-    // await newCatVal.save();
-    // console.log(newCatVal); 
-//        res.render('newCat'), {};
-// router.get('/:id', async (req, res) => {
-//     const { id } = req.params;
-//     const category = await Category.findById(id);
-//     res.render('categoryView', { category });
-// })
-
-// router.get('/:id/patch', async (req, res) => {
-//     const { id } = req.params;
-//     const category = await Category.findById(id);
-//     res.render('categoryView', { category, id });
-// })
-// })
-
-// router.get('/:id/delete', async (req, res) => {
-//     const { id } = req.params;
-//     const category = await Category.findById(id);
-//     res.render('categoryView', { category, id  });
+// router.use('/', async (req, res) => {
+//     // if(req.body.categoryName) {
+//         const newCategory = {categoryName: req.body.categoryName};
+//         console.log('***: ' + newCategory.categoryName);
+//         // await newCategory.save();
+//         const categories = await Category.find({}).sort({categoryName: 1});
+//         res.render('categoryView', {categories});
+//     // }
 // })
 
 module.exports = router;
