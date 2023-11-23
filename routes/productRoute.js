@@ -34,8 +34,6 @@ router.get('/prod', async (req, res) => {
 router.post('/', async (req, res) => {
     let newProd = (req.body);
     let newProduct = new Product(newProd)
-    // console.log('***: ' + newProduct.productName);
-    res.send(newProduct)
     await newProduct.save();
     const products = await Product.find({}).sort({productName: 1});
     res.render('productView', {products});
