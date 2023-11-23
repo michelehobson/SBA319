@@ -41,6 +41,15 @@ Extras:
 5. Using EJS, I linked each product/:id to an anchor tag for easier navigation
 6. I used Mongoose
 
+Changed After Submission:
+1. Added conditional to ensure an option had been selected before navigating to edit or delete a record
+2. Changed verbiage and renamed views
+3. I made the values on the delete pages readonly
+4. Removed an res.send
+5. Verify that the length of the _id's variable and the length of the value of the select both = 24 before attempting to navigate (Basically, I did not like 
+   the Cannot GET page if you hit delete immediately upon returning from deleting the record.) An example of what I'm referring to can be seen in categoryView.ejs on lines 78 - 82.
+6. 
+
 GitHub Link:
     https://github.com/michelehobson/SBA319.git
 

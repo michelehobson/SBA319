@@ -21,6 +21,7 @@
             background-repeat: no-repeat;
             background-position: top 10px left 50%;
         }
+
         a {
             margin: 0px 10px 0px 10px;
             color: salmon;
@@ -40,12 +41,14 @@
     <hr>
 
     <div id="catInfo">
-        <form  action="/categories/<%=categories._id%>" method="POST">
+        <form action="/categories/<%=categories._id%>" method="POST">
             <label for="name">Category Name</label>
             <select name="category" id="category" class="category">>
                 <option value=""></option>
                 <% for(let category of categories) { %>
-                    <option value="<%=category._id%>"><%= category.categoryName %></option>
+                    <option value="<%=category._id%>">
+                        <%= category.categoryName %>
+                    </option>
                     <% } %>
             </select>
             <a id="edit" href="">Edit Current</a>
@@ -57,21 +60,29 @@
     <br>
     <main>
     </main>
-        <script>
-            let catId = '';
-            document.getElementById('category').addEventListener('change', function(e) {
-                catId = e.target.value;
-                // alert(catId);
-            })
-            document.getElementById('edit').addEventListener('click', function() {
+    <script>
+        let catId = '';
+        document.getElementById('category').addEventListener('change', function (e) {
+            catId = e.target.value;
+            // alert(catId);
+        })
+        document.getElementById('edit').addEventListener('click', function (e) {
+            if(catId.length + document.getElementById('category').value.length === 48) {
                 const editProduct = document.getElementById('edit');
                 editProduct.setAttribute('href', `/categories/${catId}/editCat`)
-            })
-            document.getElementById('del').addEventListener('click', function() {
+            } else
+                this.setAttribute('href', `/categories`)
+        })
+
+        document.getElementById('del').addEventListener('click', function (e) {
+            if(catId.length + document.getElementById('category').value.length === 48) {
                 const delProduct = document.getElementById('del');
                 delProduct.setAttribute('href', `/categories/${catId}/delCat`)
-            })
-        </script>
+            } else
+                this.setAttribute('href', `/categories`)
+        })
+
+    </script>
 
 </body>
 

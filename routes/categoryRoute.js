@@ -26,7 +26,6 @@ router.post('/', async (req, res) => {
     let newCat = {categoryName: req.body.categoryName};
     let newCategory = new Category(newCat)
     // console.log('***: ' + newCategory.categoryName);
-    res.send(newCategory)
     await newCategory.save();
     const categories = await Category.find({}).sort({categoryName: 1});
     res.render('categoryView', {categories});

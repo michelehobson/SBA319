@@ -23,9 +23,9 @@
 
     <form action="/categories/<%=category._id %>?_method=DELETE" method="POST">
         <label for="categoryName">Category Name</label>
-        <input type="text" name="categoryName" value="<%=category.categoryName%>">
+        <input type="text" name="categoryName" readonly value="<%=category.categoryName%>">
         </select>
-        <button>Submit</button>
+        <button>Delete</button>
     </form>
 </body>
 </html>

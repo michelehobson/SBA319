@@ -23,7 +23,7 @@
 
     <form action="/products/<%=product._id %>?_method=DELETE" method="POST">
         <label for="productName">Product Name</label>
-        <input type="text" name="productName" value="<%=product.productName%>">
+        <input type="text" name="productName" readonly value="<%=product.productName%>">
         </select>
         <button>Submit</button>
     </form>
