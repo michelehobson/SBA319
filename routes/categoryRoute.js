@@ -3,14 +3,14 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
-const app = express();
 const bodyParser = require('body-parser');
-const path = require('path');
+const methodOverride = require('method-override');
 
 const Category = require('../models/category');
 
-router.use(bodyParser.json())
+router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
+router.use(methodOverride('_method'));
 
 router.get('/', async (req, res) => {
     const categories = await Category.find({}).sort({categoryName: 1});
@@ -25,10 +25,9 @@ router.get('/cat', async (req, res) => {
 router.post('/', async (req, res) => {
     let newCat = {categoryName: req.body.categoryName};
     let newCategory = new Category(newCat)
-    console.log('***: ' + newCategory.categoryName);
+    // console.log('***: ' + newCategory.categoryName);
     res.send(newCategory)
     await newCategory.save();
-    // res.json(newCategory);
     const categories = await Category.find({}).sort({categoryName: 1});
     res.render('categoryView', {categories});
 })
@@ -39,5 +38,13 @@ router.get('/:id', async (req, res) => {
     const h1 = `Edit ${category.categoryName}`
     res.render('editCat', {category, h1})
 })
+
+router.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const category = await Category.findByIdAndUpdate(id, req.body, {runValidators: true, new: true})
+    const categories = await Category.find({}).sort({categoryName: 1});
+    res.render('categoryView', {categories});
+})
+
 
 module.exports = router;

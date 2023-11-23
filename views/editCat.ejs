@@ -21,9 +21,9 @@
     <br>
     <br>
 
-    <form action="/categories/<%=category._id %>" method="POST">
+    <form action="/categories/<%=category._id %>?_method=PUT" method="POST">
         <label for="categoryName">Category Name</label>
-        <input type="text" name="categoryName" value="<%=category.name%>">
+        <input type="text" name="categoryName" value="<%=category.categoryName%>">
         </select>
         <button>Submit</button>
     </form>
