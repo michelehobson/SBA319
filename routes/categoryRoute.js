@@ -46,6 +46,13 @@ router.put('/:id', async (req, res) => {
     res.render('categoryView', {categories});
 })
 
+router.get('/:id/delCat', async (req, res) => {
+    const { id } = req.params;
+    const category = await Category.findById(id)
+    const h1 = `Delete ${category.categoryName}`
+    res.render('delCat', {category, h1})
+})
+
 router.delete('/:id', async (req, res) => {
     res.send('JESUS IS THE BEST THING')
     const { id } = req.params;
