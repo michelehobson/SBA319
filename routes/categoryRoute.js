@@ -21,8 +21,9 @@ router.get('/', async (req, res) => {
     res.render('categoryView', {categories});
 })
 
-router.get('/newCat', async (req, res) => {
-    res.render('newCat')
+router.get('/cat', async (req, res) => {
+    const h1 = 'Add Category'
+    res.render('cat', {h1})
 })
 
 router.post('/', async (req, res) => {
