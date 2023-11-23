@@ -35,14 +35,9 @@ router.post('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const product = await Category.findById(id)
-    const h1 = 'Edit Category'
-    res.render('cat', {h1})
+    const category = await Category.findById(id)
+    const h1 = `Edit ${category.categoryName}`
+    res.render('editCat', {category, h1})
 })
-// router.get('/:id/cat', async (req, res) => {
-//     const { id } = req.params;
-//     const product = await Product.findById(id)
-//     res.render('/products/edit', { product })
-// })
 
 module.exports = router;
