@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
     res.render('categoryView', {categories});
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id/editCat', async (req, res) => {
     const { id } = req.params;
     const category = await Category.findById(id)
     const h1 = `Edit ${category.categoryName}`
@@ -46,5 +46,12 @@ router.put('/:id', async (req, res) => {
     res.render('categoryView', {categories});
 })
 
+router.delete('/:id', async (req, res) => {
+    res.send('JESUS IS THE BEST THING')
+    const { id } = req.params;
+    const category = await Category.findByIdAndDelete(id, req.body, {runValidators: true, new: true})
+    const categories = await Category.find({}).sort({categoryName: 1});
+    res.render('categoryView', {categories});
+})
 
 module.exports = router;
