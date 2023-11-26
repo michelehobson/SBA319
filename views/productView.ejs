@@ -52,7 +52,6 @@
                 <% } %>                        
 
             </select>
-            <input type="text" name="uom" id="uom" value="<%=product.uom%>">
             <label for="category">Category</label>
             <select name="category" id="category" class="category">>
                 <% for(let category of categories) { %>
@@ -65,9 +64,8 @@
                 <% } %>
 
             </select>
-            <!--<input type="text" name="category" id="category" value="<%=product.category%>"> -->
             <label for="price">Price</label>
-            <input type="text" name="price" id="price" readonly value="<%=product.price %>">
+            <input class="noBorder" type="text" name="price" id="price" readonly value="<%=product.price %>">
             <a id="edit" href="/products/<%=product._id%>/editProd">Edit Current</a>
             <a id="del" href="/products/<%=product._id%>/delProd">Delete Current</a>
         </form>

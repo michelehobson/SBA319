@@ -29,11 +29,25 @@ h1 {
 }
 #prodInfo {
     display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
+    flex-flow: row wrap;
+    justify-content: center;
     font-family: 'Arsenal', sans-serif;
-    margin: 50px auto 0px auto;
+    margin: 50px auto 0px 0px;
     font-size: 1.25em;
+}
+#prodInfo input, #prodInfo option, #prodInfo select{
+    font-family: 'Arsenal', sans-serif;
+    color: #6b6969;
+    font-size: 1em;
+    margin: 0px 10px 0px 0px;
+}
+/* #prodInfo label {
+    margin: 0px 5px 0px 5px;
+} */
+.noBorder {
+    border: 0px;
+    width: 100px;
+
 }
 #vendInfo {
     display: flex;
@@ -115,20 +129,19 @@ li {
 #ulDiv {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
-    width: 85vw;
+    justify-content: space-evenly;
+    width: 90vw;
     height: 50vh;
-    margin: 25px 0px 0px 100px;
+    margin: 30px 50px 0px 50px;
     overflow: auto;
 
 }
 #ulDiv ul {
     display: block;
-    width: 9vw;
-    top: 30px;
+    width: fit-content;
+    top: 40px;
 }
 #ulDiv li {
-    display: block;
     list-style-type: none;
     font-family: 'Arsenal', sans-serif;
     font-size: 1em;
