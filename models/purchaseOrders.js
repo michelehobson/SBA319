@@ -9,7 +9,8 @@ const poSchema = new mongoose.Schema({
     poDate: Date,
     productName: {
         type: String,
-        required: true
+        required: true,
+        poProd: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product'}]
     },
     productQty: {
         type: Number,

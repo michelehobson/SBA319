@@ -34,6 +34,7 @@ router.get('/:id', async (req, res) => {
     const product = await Product.findById(id);
     const categories = await Category.find({}).sort({categoryName: 1});
     const uom = await UOM.find({}).sort({uom: 1});
+    // const price = await Product.getPrice;
     res.render('productView', { product, categories, uom }) // OLD detailsView
 })
 
