@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const Vendor = require('./vendor');
-const Category = require('./category');
+// const Vendor = require('./vendor');
+// const Category = require('./category');
 
 // DEFINE SCHEMA
 const productSchema = new mongoose.Schema({
     productName: {
         type: String,
+        unique: true,
         required: true
     },
     uom: {

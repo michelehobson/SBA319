@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const { JSDOM } = require('jsdom');
 
 const Category = require('../models/category');
 const Vendor = require('../models/vendor');
@@ -56,8 +57,10 @@ router.get('/:id/delCat', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
+    console.log(req.params)
     const cat = await Category.findById(id)
     const name = cat.categoryName;
+    console.log('CATEGORY: ' + name)
 
     // POPULATE LOGIC
     const category = await Category.
@@ -82,10 +85,17 @@ router.delete('/:id', async (req, res) => {
         const categories = await Category.find({}).sort({categoryName: 1});
         res.render('categoryView', {categories});
     } else {
-        const h1 = `Failed to Delete the Food Group`
-        const para = `${name} is bound to the following products and cannot be deleted.`
-        const who = 'd'
-        res.render('displayMessage', { h1, para, name, products, who })
+        const h1 = `Failed to Delete Record`
+        // const para = `${name} is bound to the following products and cannot be deleted.`
+        const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
+        const para = dom.window.document.createElement('p');
+        // const div = dom.window.document.getElementById('appendTo');
+        para.textContent = `${name} is bound to the following products and cannot be deleted.`
+        para.classList.add('failure1')
+        dom.window.document.dispatchEvent.append//.appendChild(para);
+        // const class1 = failure1;
+        // const class2 = failure2;
+        res.render('displayMessage', { h1, para, name, products })
     }
 })
 

@@ -80,14 +80,27 @@ a:focus {
     /* color: #475F6B !important; */
     color: #1f4456;
 }
-
-form .btn {
+#paragraphs {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
     font-family: 'Arsenal', sans-serif;
-    font-size: .80em;
-    background: #cdd7db;
-    border-radius: 0px;
-    box-shadow: 0 0.1em 0.3em .1em rgba(0, 0, 0, 0.406);
-    margin-left: 10px;
-    margin-right: 10px;
-    width: auto;
+    margin: 50px 0px 0px 20vw;
+}
+
+.failure1 {
+    font-family: 'Kay Pho Du', serif;
+    font-weight: 500;
+    color: maroon;
+    font-size: 2em;
+}
+.failure2 {
+    color: #357291;
+    font-size: 1.5em;
+}
+.failure3 {
+    color: black;
+}
+.failure4 {
+    color: blue;
 }

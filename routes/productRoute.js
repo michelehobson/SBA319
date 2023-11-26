@@ -17,18 +17,18 @@ const desc = 'Product';
 
 router.get('/', async (req, res) => {
     const products = await Product.find({}).sort( {category: 1, productName: 1 })
-    res.render('allProductsView', { products, h1, desc })
-})
-
-router.get('/:id', async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findById(id);
-    res.render('productView', { product })
+    res.render('allProductsView', { products, h1, desc })  // OLD productView
 })
 
 router.get('/prod', async (req, res) => {
     const h1 = 'Add Product'
     res.render('prod', {h1})
+})
+
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    res.render('productView', { product }) // OLD detailsView
 })
 
 router.post('/', async (req, res) => {
