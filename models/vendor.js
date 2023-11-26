@@ -1,10 +1,22 @@
 const mongoose = require('mongoose');
-const Category = require('./category')
 
 // DEFINE SCHEMA
 const vendorSchema = new mongoose.Schema({
-    vendorName: String,
-    address: String,
+    vendorNumber: {
+        type: String,
+        required: true,
+        unique: true,
+        min: 5,
+        max: 10
+    },
+    vendorName: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        unique: true,
+    },
     city: String,
     state: {
         type: String,
@@ -20,20 +32,16 @@ const vendorSchema = new mongoose.Schema({
         min: 5,
         max: 5
     },
-    category: {
+    phone: {
         type: String,
-        index: true,
-        vendCat: [{type: mongoose.Schema.Types.ObjectId, ref: 'Category'}]
+        min: 10,
+        max: 10
     },
-    vpName: String,
-    vpQty: Number,
-    uom: {
+    fax: {
         type: String,
-        required: true,
-        lowercase: true,
-        enum: ['per lb', 'each', 'bag', 'gallon', '.5 gallon', 'case', 'bushel'],
-    },
-    uomCost: Number
+        min: 10,
+        max: 10
+    }
 })
 
 const Vendor = new mongoose.model('Vendor', vendorSchema);

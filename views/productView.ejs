@@ -42,9 +42,30 @@
             <label for="productName">Product Name</label>
             <input type="text" name="productName" id="productName" value="<%=product.productName %>">
             <label for="uom">UOM</label>
+            <select name="uom" id="uom">
+                <% for(let u of uom) { %>
+                    <% if(u.uom === product.uom) { %>
+                        <option value="<%= u.uom %>" selected><%= u.uom %></option>
+                    <% } else { %>
+                        <option value="<%= u.uom %>"><%= u.uom %></option>
+                    <% } %>                        
+                <% } %>                        
+
+            </select>
             <input type="text" name="uom" id="uom" value="<%=product.uom%>">
             <label for="category">Category</label>
-            <input type="text" name="category" id="category" value="<%=product.category%>">
+            <select name="category" id="category" class="category">>
+                <% for(let category of categories) { %>
+                    <% if(category.categoryName === product.category) { %>
+                        <option value="<%=category._id%>" selected><%= category.categoryName %></option>
+                    <% } else { %>
+                        <option value="<%=category._id%>"><%= category.categoryName %></option>
+                    <% } %>                        
+                    
+                <% } %>
+
+            </select>
+            <!--<input type="text" name="category" id="category" value="<%=product.category%>"> -->
             <label for="price">Price</label>
             <input type="text" name="price" id="price" readonly value="<%=product.price %>">
             <a id="edit" href="/products/<%=product._id%>/editProd">Edit Current</a>

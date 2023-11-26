@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
 const Product = require('../models/product');
+const Category = require('../models/category')
+const UOM = require('../models/uom');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
@@ -22,13 +24,17 @@ router.get('/', async (req, res) => {
 
 router.get('/prod', async (req, res) => {
     const h1 = 'Add Product'
-    res.render('prod', {h1})
+    const categories = await Category.find({}).sort({categoryName: 1});
+    const uom = await UOM.find({}).sort({uom: 1});
+    res.render('prod', {h1, categories, uom})
 })
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
-    res.render('productView', { product }) // OLD detailsView
+    const categories = await Category.find({}).sort({categoryName: 1});
+    const uom = await UOM.find({}).sort({uom: 1});
+    res.render('productView', { product, categories, uom }) // OLD detailsView
 })
 
 router.post('/', async (req, res) => {

@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
         lowercase: true,
-        enum: ['per lb', 'each', 'bag', 'gallon', '.5 gallon', 'case', 'bushel']
+        prodUOM: [ { type: mongoose.Schema.Types.ObjectId, ref: 'UOM'}]
     },
     category: {
         type: String,
