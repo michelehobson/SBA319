@@ -10,7 +10,7 @@
     <title>Products</title>
 </head>
 <body>
-    <h1><%= h1 %></h1>
+    <h1><%= h1Rev %></h1>
     <nav class="myNavStyle">
         <a class="menuLinkStyle" href="/">Home</a>
         <a class="menuLinkStyle" href="../categories">Categories</a>
@@ -21,11 +21,27 @@
     <br>
     <br>
 
-    <form action="/products" method="POST">
-        <label for="productName">Product Name</label>
-        <input type="text" name="ProductName">
-        </select>
-        <button>Submit</button>
-    </form>
+    <div id="prodInfo">
+        <form action="/products" method="POST">
+            <label for="productName">Product Name</label>
+            <input type="text" name="productName" id="productName" value="">
+            <label for="uom">UOM</label>
+            <select name="uom" id="uom">
+                <option value="" selected></option>
+                <% for(let u of uom) { %>
+                    <option value="<%= u.uom %>"><%= u.uom %></option>
+                <% } %>                        
+            </select>    
+            <label for="category">Category</label>
+            <select name="category" id="category" class="category">>
+                <option value="" selected></option>
+                <% for(let category of categories) { %>
+                    <option value="<%=category._id%>"><%= category.categoryName %></option>
+                <% } %>
+            </select>
+            <button>Submit</button>
+        </form>
+    </div>
+
 </body>
 </html>

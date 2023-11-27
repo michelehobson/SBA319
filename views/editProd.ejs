@@ -11,7 +11,7 @@
     <title>Edit Product</title>
 </head>
 <body>
-    <h1><%= h1 %></h1>
+    <h1><%= h1Rev %></h1>
     <nav class="myNavStyle">
         <a class="menuLinkStyle" href="/">Home</a>
         <a class="menuLinkStyle" href="../../categories">Categories</a>
@@ -22,11 +22,36 @@
     <br>
     <br>
 
-    <form action="/products/<%=product._id %>?_method=PUT" method="POST">
-        <label for="productName">Product Name</label>
-        <input type="text" name="productName" value="<%=product.productName%>">
-        </select>
-        <button>Submit</button>
+    <div id="prodInfo">
+        <form action="/products/<%=product._id %>?_method=PUT" method="POST">
+            <label for="productName">Product Name</label>
+            <input type="text" name="productName" id="productName" value="<%=product.productName %>">
+            <label for="uom">UOM</label>
+            <select name="uom" id="uom">
+                <% for(let u of uom) { %>
+                    <% if(u.uom === product.uom) { %>
+                        <option value="<%= u.uom %>" selected><%= u.uom %></option>
+                    <% } else { %>
+                        <option value="<%= u.uom %>"><%= u.uom %></option>
+                    <% } %>                        
+                <% } %>                        
+
+            </select>
+            <label for="category">Category</label>
+            <select name="category" id="category" class="category">>
+                <% for(let category of categories) { %>
+                    <% if(category.categoryName === product.category) { %>
+                        <option value="<%=category._id%>" selected><%= category.categoryName %></option>
+                    <% } else { %>
+                        <option value="<%=category._id%>"><%= category.categoryName %></option>
+                    <% } %>                        
+                    
+                <% } %>
+
+            </select>
+            <button>Submit</button>
+        </form>
+    </div>
     </form>
 </body>
 </html>
